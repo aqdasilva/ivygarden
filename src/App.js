@@ -1,12 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
+import MainPage from './Components/mainPage';
+import React from 'react';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        Ivy's Garden of Healthy Gainss
-      </header>
+      <MainPage />
     </div>
   );
 }
