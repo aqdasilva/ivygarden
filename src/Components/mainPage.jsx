@@ -12,6 +12,11 @@ import {
   import React from 'react';
   const { Header, Content, Footer, Sider } = Layout;
 
+  const items1 = ['1', '2', '3'].map((key) => ({
+    key,
+    label: `nav ${key}`,
+  }));
+
   function getItem(label, key, icon, children) {
     return {
       key,
@@ -67,12 +72,10 @@ import {
             marginLeft: 200,
           }}
         >
-          <Header
-            style={{
-              padding: 0,
-              background: colorBgContainer,
-            }}
-          />
+        <Header className="header">
+            <div className="logo" />
+            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
+        </Header>
           <Content
             style={{
               margin: '24px 16px 0',
