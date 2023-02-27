@@ -11,21 +11,30 @@ import {
   import { Layout, Menu, theme } from 'antd';
   import React from 'react';
   const { Header, Content, Footer, Sider } = Layout;
-  const items = [
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    BarChartOutlined,
-    CloudOutlined,
-    AppstoreOutlined,
-    TeamOutlined,
-    ShopOutlined,
-  ].map((icon, index) => ({
-    key: String(index + 1),
-    icon: React.createElement(icon),
-    label: `nav ${index + 1}`,
-  }));
 
+  function getItem(label, key, icon, children) {
+    return {
+      key,
+      icon,
+      children,
+      label,
+    };
+  }
+
+  const items = [
+    getItem('Profile', '1', < UserOutlined />),
+    getItem('Meetings', '2', <VideoCameraOutlined />),
+    getItem('Online Friends', 'sub1', <UploadOutlined />, [
+      getItem('Tom', '3'),
+      getItem('Bill', '4'),
+      getItem('Alex', '5'),
+    ]),
+    getItem('Purchases', 'sub2', <BarChartOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+    getItem('Workouts', '9', <CloudOutlined />),
+    getItem('Fitness Goals', '123', <AppstoreOutlined/>),
+    getItem('Nutrition Stats', '123', <TeamOutlined/>),
+    getItem('Nutrition Shops', '123', <ShopOutlined/>),
+  ];
 
   const MainPage = () => {
     const {
