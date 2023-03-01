@@ -23,10 +23,17 @@ import {
   }
 
   const topItems = [
-    getItem('top 1', '1',< UserOutlined /> ),
-    getItem('Meetings', '2', <VideoCameraOutlined />),
-    getItem('Fitness Goals', '123', <AppstoreOutlined/>),
+    {
+      label: 'Top Menu',
+      key: '1',
+      children: [
+        getItem('top 1', '2', <UserOutlined />)
+      ]
+    },
+    getItem('Meetings', '3', <VideoCameraOutlined />),
+    getItem('Fitness Goals', '4', <AppstoreOutlined />)
   ];
+  
 
   const items = [
     getItem('Profile', '1', < UserOutlined />),
@@ -76,7 +83,23 @@ import {
         >
         <Header className="header">
             <div className="logo" />
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={topItems} />
+            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={topItems}>
+              {topItems.map(item =>
+                item.children ? (
+                  <Menu.SubMenu key={item.key} icon={item.icon} title={item.label}>
+                    {item.children.map(child => (
+                      <Menu.Item key={child.key} icon={child.icon}>
+                        {child.label}
+                      </Menu.Item>
+                    ))}
+                  </Menu.SubMenu>
+                ) : (
+                  <Menu.Item key={item.key} icon={item.icon}>
+                    {item.label}
+                  </Menu.Item>
+                )
+              )}
+            </Menu>
         </Header>
           <Content
             style={{
