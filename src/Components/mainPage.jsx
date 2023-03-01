@@ -12,10 +12,6 @@ import {
   import React from 'react';
   const { Header, Content, Footer, Sider } = Layout;
 
-  const items1 = ['1', '2', '3'].map((key) => ({
-    key,
-    label: `nav ${key}`,
-  }));
 
   function getItem(label, key, icon, children) {
     return {
@@ -25,6 +21,12 @@ import {
       label,
     };
   }
+
+  const topItems = [
+    getItem('top 1', '1',< UserOutlined /> ),
+    getItem('Meetings', '2', <VideoCameraOutlined />),
+    getItem('Fitness Goals', '123', <AppstoreOutlined/>),
+  ];
 
   const items = [
     getItem('Profile', '1', < UserOutlined />),
@@ -74,7 +76,7 @@ import {
         >
         <Header className="header">
             <div className="logo" />
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
+            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={topItems} />
         </Header>
           <Content
             style={{
@@ -117,4 +119,5 @@ import {
       </Layout>
     );
   };
+
   export default MainPage;
