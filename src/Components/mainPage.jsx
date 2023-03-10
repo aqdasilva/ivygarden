@@ -10,15 +10,18 @@ import {
   } from '@ant-design/icons';
   import { Layout, Menu, theme } from 'antd';
   import React from 'react';
+
+
   const { Header, Content, Footer, Sider } = Layout;
 
 
-  function getItem(label, key, icon, children) {
+  function getItem(label, key, icon, children, link) {
     return {
       key,
       icon,
       children,
       label,
+      link,
     };
   }
 
@@ -36,7 +39,7 @@ import {
   
 
   const items = [
-    getItem('Profile', '1', < UserOutlined />),
+    getItem('Profile', '1', < UserOutlined />, undefined, '/profile'),
     getItem('Meetings', '2', <VideoCameraOutlined />),
     getItem('Online Friends', 'sub1', <UploadOutlined />, [
       getItem('Tom', '3'),
